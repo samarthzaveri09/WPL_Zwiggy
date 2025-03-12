@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Order</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the existing CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1>Complete Your Order</h1>
+        
+        <div class="order-section">
+            <h2>Order Summary</h2>
+            <div id="order-summary">
+                <!-- Order summary will be populated by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="order-section">
+            <h2>Delivery Information</h2>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="customer-name">Full Name*</label>
+                    <input type="text" id="customer-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer-phone">Phone Number*</label>
+                    <input type="tel" id="customer-phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer-email">Email*</label>
+                    <input type="email" id="customer-email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="delivery-address">Delivery Address*</label>
+                    <textarea id="delivery-address" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="payment-method">Payment Method*</label>
+                    <select id="payment-method" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="cod">Cash on Delivery</option>
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="upi">UPI</option>
+                    </select>
+                </div>
+                
+                <input type="hidden" id="final-amount" value="0">
+                
+                <button type="submit">Place Order</button>
+            </form>
+        </div>
+        
+        <a href="index.html" class="back-link">← Back to Restaurants</a>
+    </div>
+
+    <script>
+        // JavaScript to populate order summary and handle form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            calculateOrderTotal(); // Call function to calculate and display order total
+
+            document.getElementById('checkout-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                placeOrder();
+            });
+        });
+
+        function calculateOrderTotal() {
+            const cartItems = JSON.parse(localStorage.getItem('restaurantCart')) || [];
+            const orderSummary = document.getElementById('order-summary');
+            let total = 0;
+
+            if (cartItems.length === 0) {
+                orderSummary.innerHTML = "<p>Your cart is empty!</p>";
+                return;
+            }
+
+            orderSummary.innerHTML = `<h3>Order Items:</h3><ul>${cartItems.map(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                return `<li>${item.dishName} (${item.restaurantName}) x ${item.quantity} - ₹${itemTotal}</li>`;
+            }).join('')}</ul>`;
+
+            document.getElementById('final-amount').value = total.toFixed(2);
+        }
+
+        function placeOrder() {
+            const form = document.getElementById('checkout-form');
+            if (form.checkValidity()) {
+                const name = document.getElementById('customer-name').value;
+                const amount = document.getElementById('final-amount').value;
+
+                // Clear cart after successful order
+                localStorage.removeItem('restaurantCart');
+
+                // Redirect to confirmation page or show confirmation message
+                alert(`Thank you, ${name}! Your order of ₹${amount} has been placed successfully.`);
+                window.location.href = 'index.html';
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        }
+    </script>
+</body>
+</html>

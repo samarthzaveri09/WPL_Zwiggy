@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zwiggy - Food Delivery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the existing CSS file -->
+</head>
+<body>
+    <header>
+        <div class="promo-banner">
+            Get 5% Off your first order, Promo: ORDER5
+        </div>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Zwiggy</div>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Browse Menu</a></li>
+                    <li><a href="#">Special Offers</a></li>
+                    <li><a href="#">Restaurants</a></li>
+                    <li><a href="#">Track Order</a></li>
+                </ul>
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>K J Somaiya School of Engineering</span>
+                    <a href="#" style="margin-left: 5px; color: var(--primary-color);">Change Location</a>
+                </div>
+                <div class="auth-buttons">
+                    <button style="background-color: white; color: var(--primary-color); border: 1px solid var(--primary-color);">Login/Signup</button>
+                    <a href="order.html" class="cart-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        View Cart
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Feast Your Senses, Fast and Fresh</h1>
+            <p>Order Restaurant food, takeaway and groceries.</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Enter a postcode to see what we deliver (e.g. EC4R 3TE)">
+                <button>Search</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="existing-restaurants" class="restaurants">
+        <div class="container">
+            <h2 class="section-title">Available Restaurants</h2>
+            <!-- Restaurant cards will be rendered here -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Important Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Get help</a></li>
+                        <li><a href="#">Add your restaurant</a></li>
+                        <li><a href="#">Sign up to deliver</a></li>
+                        <li><a href="#">Create a business account</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal Pages</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms and conditions</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Cookies</a></li>
+                        <li><a href="#">Modern Slavery Statement</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Who we are?</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Zwiggy blog</a></li>
+                        <li><a href="#">Engineering blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Subscribe to Newsletter</h3>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Enter your email">
+                        <button>Subscribe</button>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <h3>Follow Us</h3>
+                        <div style="display: flex; gap: 10px; margin-top: 10px;">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Zwiggy Food Delivery. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="crud.js"> </script>
+</body>
+</html>
