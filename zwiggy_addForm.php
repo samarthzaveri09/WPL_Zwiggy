@@ -12,6 +12,28 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error); // Database connection error
 }
 
+// Generate a unique random primary key for restaurant ID
+function generateUniqueRestaurantId($conn) {
+    do {
+        // Generate a random ID (adjust the range as needed)
+        $restaurantId = mt_rand(1000, 999999);
+        
+        // Check if this ID already exists in the database
+        $checkQuery = "SELECT COUNT(*) FROM restaurants WHERE restaurant_id = $restaurantId";
+        $result = mysqli_query($conn, $checkQuery);
+        $count = mysqli_fetch_array($result)[0];
+        
+    } while ($count > 0); // Keep generating until we find an unused ID
+    
+    return $restaurantId;
+}
+
+// Then in your insert code (around line 65), replace:
+// INSERT INTO restaurants (restaurant_id, ...) VALUES (0, ...)
+// with:
+$restaurantId = generateUniqueRestaurantId($conn);
+// INSERT INTO restaurants (restaurant_id, ...) VALUES ($restaurantId, ...)
+
 // Initialize error message variables
 $nameError = $cuisineError = $ratingError = $locationError = $contactError = $timeError = "";
 
