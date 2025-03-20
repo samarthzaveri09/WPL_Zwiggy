@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 900">
+  <!-- Background -->
+  <rect width="1000" height="900" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="500" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Zwiggy Database ER Diagram</text>
+  
+  <!-- USERS Table -->
+  <rect x="50" y="100" width="200" height="200" fill="#b3e0ff" stroke="#0066cc" stroke-width="2" rx="5" ry="5" />
+  <text x="150" y="125" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">USERS</text>
+  <line x1="50" y1="135" x2="250" y2="135" stroke="#0066cc" stroke-width="2" />
+  
+  <text x="60" y="155" font-family="Arial" font-size="12">user_id (PK)</text>
+  <text x="60" y="175" font-family="Arial" font-size="12">name</text>
+  <text x="60" y="195" font-family="Arial" font-size="12">email</text>
+  <text x="60" y="215" font-family="Arial" font-size="12">phone</text>
+  <text x="60" y="235" font-family="Arial" font-size="12">password_hash</text>
+  <text x="60" y="255" font-family="Arial" font-size="12">address</text>
+  <text x="60" y="275" font-family="Arial" font-size="12">created_at</text>
+  
+  <!-- RESTAURANTS Table -->
+  <rect x="750" y="100" width="200" height="220" fill="#ffd9b3" stroke="#cc6600" stroke-width="2" rx="5" ry="5" />
+  <text x="850" y="125" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">RESTAURANTS</text>
+  <line x1="750" y1="135" x2="950" y2="135" stroke="#cc6600" stroke-width="2" />
+  
+  <text x="760" y="155" font-family="Arial" font-size="12">restaurant_id (PK)</text>
+  <text x="760" y="175" font-family="Arial" font-size="12">name</text>
+  <text x="760" y="195" font-family="Arial" font-size="12">description</text>
+  <text x="760" y="215" font-family="Arial" font-size="12">address</text>
+  <text x="760" y="235" font-family="Arial" font-size="12">phone</text>
+  <text x="760" y="255" font-family="Arial" font-size="12">rating</text>
+  <text x="760" y="275" font-family="Arial" font-size="12">opening_time</text>
+  <text x="760" y="295" font-family="Arial" font-size="12">closing_time</text>
+  <text x="760" y="315" font-family="Arial" font-size="12">created_at</text>
+  
+  <!-- MENU_ITEMS Table -->
+  <rect x="750" y="400" width="200" height="200" fill="#d9b3ff" stroke="#6600cc" stroke-width="2" rx="5" ry="5" />
+  <text x="850" y="425" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">MENU_ITEMS</text>
+  <line x1="750" y1="435" x2="950" y2="435" stroke="#6600cc" stroke-width="2" />
+  
+  <text x="760" y="455" font-family="Arial" font-size="12">item_id (PK)</text>
+  <text x="760" y="475" font-family="Arial" font-size="12">restaurant_id (FK)</text>
+  <text x="760" y="495" font-family="Arial" font-size="12">name</text>
+  <text x="760" y="515" font-family="Arial" font-size="12">description</text>
+  <text x="760" y="535" font-family="Arial" font-size="12">price</text>
+  <text x="760" y="555" font-family="Arial" font-size="12">category</text>
+  <text x="760" y="575" font-family="Arial" font-size="12">is_available</text>
+  <text x="760" y="595" font-family="Arial" font-size="12">created_at</text>
+  
+  <!-- ORDERS Table -->
+  <rect x="400" y="100" width="200" height="180" fill="#b3ffb3" stroke="#009900" stroke-width="2" rx="5" ry="5" />
+  <text x="500" y="125" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">ORDERS</text>
+  <line x1="400" y1="135" x2="600" y2="135" stroke="#009900" stroke-width="2" />
+  
+  <text x="410" y="155" font-family="Arial" font-size="12">order_id (PK)</text>
+  <text x="410" y="175" font-family="Arial" font-size="12">user_id (FK)</text>
+  <text x="410" y="195" font-family="Arial" font-size="12">restaurant_id (FK)</text>
+  <text x="410" y="215" font-family="Arial" font-size="12">total_price</text>
+  <text x="410" y="235" font-family="Arial" font-size="12">status</text>
+  <text x="410" y="255" font-family="Arial" font-size="12">created_at</text>
+  
+  <!-- ORDER_ITEMS Table -->
+  <rect x="400" y="400" width="200" height="140" fill="#ffffb3" stroke="#999900" stroke-width="2" rx="5" ry="5" />
+  <text x="500" y="425" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">ORDER_ITEMS</text>
+  <line x1="400" y1="435" x2="600" y2="435" stroke="#999900" stroke-width="2" />
+  
+  <text x="410" y="455" font-family="Arial" font-size="12">order_item_id (PK)</text>
+  <text x="410" y="475" font-family="Arial" font-size="12">order_id (FK)</text>
+  <text x="410" y="495" font-family="Arial" font-size="12">item_id (FK)</text>
+  <text x="410" y="515" font-family="Arial" font-size="12">quantity</text>
+  <text x="410" y="535" font-family="Arial" font-size="12">price</text>
+  
+  <!-- PAYMENTS Table -->
+  <rect x="400" y="650" width="200" height="180" fill="#ffb3d9" stroke="#cc0066" stroke-width="2" rx="5" ry="5" />
+  <text x="500" y="675" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">PAYMENTS</text>
+  <line x1="400" y1="685" x2="600" y2="685" stroke="#cc0066" stroke-width="2" />
+  
+  <text x="410" y="705" font-family="Arial" font-size="12">payment_id (PK)</text>
+  <text x="410" y="725" font-family="Arial" font-size="12">order_id (FK)</text>
+  <text x="410" y="745" font-family="Arial" font-size="12">user_id (FK)</text>
+  <text x="410" y="765" font-family="Arial" font-size="12">amount</text>
+  <text x="410" y="785" font-family="Arial" font-size="12">payment_method</text>
+  <text x="410" y="805" font-family="Arial" font-size="12">status</text>
+  <text x="410" y="825" font-family="Arial" font-size="12">transaction_id</text>
+  
+  <!-- REVIEWS Table -->
+  <rect x="50" y="400" width="200" height="160" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="5" ry="5" />
+  <text x="150" y="425" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">REVIEWS</text>
+  <line x1="50" y1="435" x2="250" y2="435" stroke="#cc0000" stroke-width="2" />
+  
+  <text x="60" y="455" font-family="Arial" font-size="12">review_id (PK)</text>
+  <text x="60" y="475" font-family="Arial" font-size="12">user_id (FK)</text>
+  <text x="60" y="495" font-family="Arial" font-size="12">restaurant_id (FK)</text>
+  <text x="60" y="515" font-family="Arial" font-size="12">rating</text>
+  <text x="60" y="535" font-family="Arial" font-size="12">review_text</text>
+  <text x="60" y="555" font-family="Arial" font-size="12">created_at</text>
+  
+  <!-- Relationships -->
+  <!-- Users to Orders -->
+  <path d="M 250 150 L 400 150" stroke="#000000" stroke-width="2" fill="none" />
+  <polygon points="390,145 400,150 390,155" fill="#000000" />
+  <text x="325" y="140" font-family="Arial" font-size="12" text-anchor="middle">places</text>
+  <text x="260" y="145" font-family="Arial" font-size="14">1</text>
+  <text x="390" y="145" font-family="Arial" font-size="14">N</text>
+  
+  <!-- Users to Reviews -->
+  <path d="M 150 300 L 150 400" stroke="#000000" stroke-width="2" fill="none" />
+  <polygon points="145,390 150,400 155,390" fill="#000000" />
+  <text x="160" y="350" font-family="Arial" font-size="12">writes</text>
+  <text x="140" y="310" font-family="Arial" font-size="14">1</text>
+  <text x="140" y="390" font-family="Arial" font-size="14">N</text>
+  
+  <!-- Users to Payments -->
+  <path d="M 50 200 L 25 200 L 25 750 L 375 750 L 400 750" stroke="#000000" stroke-width="2" fill="none" />
+  <polygon points="390,745 400,750 390,755" fill="#000000" />
+  <text x="200" y="735" font-family="Arial" font-size="12" text-anchor="middle">makes</text>
+  <text x="40" y="195" font-family="Arial" font-size="14">1</text>
+  <text x="390" y="745" font-family="Arial" font-size="14">N</text>
+  
+  <!-- Restaurants to Orders -->
+  <path d="M 750 150 L 600 150" stroke="#000000" stroke-width="2" fill="none" />
+  <polygon points="610,145 600,150 610,155" fill="#000000" />
+  <text x="675" y="140" font-family="Arial" font-size="12" text-anchor="middle">receives</text>
+  <text x="740" y="145" font-family="Arial" font-size="14">1</text>
+  <text x="610" y="145" font-family="Arial" font-size="14">N</text>
+  
+  <!-- Restaurants to Menu Items -->
+  <path d="M 850 320 L 850 400" stroke="#000000" stroke-width="2" fill="none" />
+  <polygon points="845,390 850,400 855,390" fill="#000000" />
+  <text x="860" y="360" font-family="Arial" font-size="12">offers</text>
+  <text x="840" y="330" font-family="Arial" font-size="14">1</text>
+  <text x="840" y="390" font-family="Arial" font-size="14">N</text>
+  
+  <!-- Restaurants to Reviews -->
+  <path d="M 750 200 L 650 200 L 650 350 L 300 350 L 300 480 L 250 480" stroke="#000000" stroke-width="2" fill="none" />
+  <polygon points="260,475 250,480 260,485" fill="#000000" />
+  <text x="475" y="340" font-family="Arial" font-size="12" text-anchor="middle">receives</text>
+  <text x="740" y="195" font-family="Arial" font-size="14">1</text>
+  <text x="260" y="475" font-family="Arial" font-size="14">N</text>
+  
+  <!-- Orders to Order Items -->
+  <path d="M 500 280 L 500 400" stroke="#000000" stroke-width="2" fill="none" />
+  <polygon points="495,390 500,400 505,390" fill="#000000" />
+  <text x="510" y="340" font-family="Arial" font-size="12">contains</text>
+  <text x="490" y="290" font-family="Arial" font-size="14">1</text>
+  <text x="490" y="390" font-family="Arial" font-size="14">N</text>
+  
+  <!-- Orders to Payments -->
+  <path d="M 500 280 L 500 330 L 650 330 L 650 700 L 600 700" stroke="#000000" stroke-width="2" fill="none" />
+  <polygon points="610,695 600,700 610,705" fill="#000000" />
+  <text x="620" y="690" font-family="Arial" font-size="12">paid through</text>
+  <text x="490" y="290" font-family="Arial" font-size="14">1</text>
+  <text x="610" y="695" font-family="Arial" font-size="14">N</text>
+  
+  <!-- Menu Items to Order Items -->
+  <path d="M 750 470 L 600 470" stroke="#000000" stroke-width="2" fill="none" />
+  <polygon points="610,465 600,470 610,475" fill="#000000" />
+  <text x="675" y="460" font-family="Arial" font-size="12" text-anchor="middle">included in</text>
+  <text x="740" y="465" font-family="Arial" font-size="14">1</text>
+  <text x="610" y="465" font-family="Arial" font-size="14">N</text>
+  
+  <!-- Legend -->
+  <rect x="750" y="650" width="200" height="120" fill="white" stroke="black" stroke-width
