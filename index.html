@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zwiggy Food Delivery</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+        }
+
+        /* Header Styles */
+        .top-banner {
+            background-color: #f1f1f1;
+            padding: 6px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .top-banner-left {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .top-banner-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .signup-btn {
+            background-color: #4e1d9e;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #c39bfc;
+            padding: 40px 10%;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .hero h1 {
+            color: #4e1d9e;
+            margin-bottom: 15px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .hero p {
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .search-bar {
+            display: flex;
+            margin-top: 20px;
+            max-width: 400px;
+        }
+
+        .search-bar input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px 0 0 8px;
+            outline: none;
+        }
+
+        .search-bar button {
+            background-color: #4e1d9e;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Featured Image Section */
+        .featured-image {
+            padding: 20px 10%;
+            text-align: center;
+        }
+
+        .featured-image h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .featured-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Restaurant Section - Integrated */
+        .restaurants {
+            padding: 20px 10%;
+        }
+
+        .restaurants h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .restaurant-cards {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+        }
+
+        .restaurant-card {
+            min-width: 150px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .restaurant-card img {
+            width: 100%;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .restaurant-name {
+            padding: 10px 5px;
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Orders Section - Integrated */
+        .available-dishes {
+            padding: 20px 10%;
+            margin-bottom: 30px;
+        }
+
+        .available-dishes h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .dishes-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .dish-card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .dish-content h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .dish-content p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .dish-location {
+            font-size: 12px;
+            color: gray;
+            margin-top: 5px;
+        }
+
+        .dish-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .dish-price {
+            font-weight: bold;
+            color: white;
+            background: #4e1d9e;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+
+        .add-to-cart {
+            background-color: #4e1d9e;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .add-to-cart:hover {
+            background-color: #37167b;
+        }
+
+        /* Stats Section */
+        .stats {
+            margin: 30px 10%;
+            background-color: #4e1d9e;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            text-align: center;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 30px 10%;
+            background-color: #f8f8f8;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            width: 30px;
+            height: 30px;
+            background-color: #f1f1f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            font-size: 12px;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-bottom-links a {
+            text-decoration: none;
+            color: #666;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .restaurant-cards {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="top-banner-left">
+            <span>Get Rs.125 off your first order. </span>
+            <a href="#" style="color: #4e1d9e; text-decoration: none; font-weight: bold;">ZWIGGY125FIRST</a>
+        </div>
+        <div class="top-banner-right">
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <span>🏫</span>
+                <span>K.J Somaiya School of Engineering</span>
+            </div>
+            <a href="#" style="color: #4e1d9e; text-decoration: none;">Change Location</a>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="logo">
+            <img src="https://placehold.co/100x30?text=Zwiggy" alt="Zwiggy">
+        </div>
+        <nav class="nav-links">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">Cart</a>
+            <a href="#" class="signup-btn">Sign Up/Sign In</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <p>Order Restaurant food, takeaways and groceries.</p>
+        <h1>Feast Your Senses, Fast and Fresh</h1>
+        <p>Enter a postcode to see what we deliver!</p>
+        <div class="search-bar">
+            <input type="text" placeholder="e.g. EC4R 3TE">
+            <button>Search</button>
+        </div>
+    </section>
+
+    <!-- Featured Image Section (Replacing Categories) -->
+    <section class="featured-image">
+        <h2>Featured Indian Dish</h2>
+        <img src="cholle-bhature.jpg" alt="Indian food plate with puri and chickpea curry" 
+             style="width: 150%; max-width: 600px; height: 50%; border-radius: 10px;" 
+             onerror="this.src='https://placehold.co/600x400?text=Indian+Cuisine'">
+        </section>
+
+    <!-- Restaurants Section - Integrated -->
+    <section class="restaurants">
+        <h2>Popular Restaurants</h2>
+        <div class="restaurant-cards">
+            <div class="restaurant-card">
+                <img src="https://placehold.co/150x80?text=Pizza+Heaven" alt="Pizza Heaven">
+                <div class="restaurant-name">Pizza Heaven</div>
+            </div>
+            <div class="restaurant-card">
+                <img src="https://placehold.co/150x80?text=Burger+World" alt="Burger World">
+                <div class="restaurant-name">Burger World</div>
+            </div>
+            <div class="restaurant-card">
+                <img src="https://placehold.co/150x80?text=Sushi+Palace" alt="Sushi Palace">
+                <div class="restaurant-name">Sushi Palace</div>
+            </div>
+            <div class="restaurant-card">
+                <img src="https://placehold.co/150x80?text=Tandoori+Delight" alt="Tandoori Delight">
+                <div class="restaurant-name">Tandoori Delight</div>
+            </div>
+            <div class="restaurant-card">
+                <img src="https://placehold.co/150x80?text=KFC" alt="KFC">
+                <div class="restaurant-name">KFC Restaurant</div>
+            </div>
+            <div class="restaurant-card">
+                <img src="https://placehold.co/150x80?text=McDonald's" alt="McDonald's">
+                <div class="restaurant-name">McDonald's</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Available Dishes Section - Integrated -->
+    <section class="available-dishes">
+        <h2>Available Dishes</h2>
+        <div class="dishes-container">
+            <div class="dish-card">
+                <div class="dish-content">
+                    <h3>Margherita Pizza</h3>
+                    <p>Classic cheese pizza with fresh tomatoes and basil.</p>
+                </div>
+                <div class="dish-location">Location: Pizza Heaven</div>
+                <div class="dish-footer">
+                    <span class="dish-price">₹199</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <div class="dish-content">
+                    <h3>Chicken Burger</h3>
+                    <p>Grilled chicken patty with fresh lettuce, tomato and special sauce.</p>
+                </div>
+                <div class="dish-location">Location: Burger World</div>
+                <div class="dish-footer">
+                    <span class="dish-price">₹149</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <div class="dish-content">
+                    <h3>Salmon Sushi</h3>
+                    <p>Fresh salmon with rice and seaweed, served with wasabi and soy sauce.</p>
+                </div>
+                <div class="dish-location">Location: Sushi Palace</div>
+                <div class="dish-footer">
+                    <span class="dish-price">₹299</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <div class="dish-content">
+                    <h3>Paneer Tikka</h3>
+                    <p>Grilled paneer cubes with spices, served with mint chutney.</p>
+                </div>
+                <div class="dish-location">Location: Tandoori Delight</div>
+                <div class="dish-footer">
+                    <span class="dish-price">₹249</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-item">
+            <span class="stat-number">546+</span>
+            <span class="stat-label">Registered Sellers</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">789,900+</span>
+            <span class="stat-label">Orders Delivered</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">690+</span>
+            <span class="stat-label">Restaurants Partnered</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">17,457+</span>
+            <span class="stat-label">Food Items</span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#"><span>f</span></a>
+            <a href="#"><span>t</span></a>
+            <a href="#"><span>in</span></a>
+            <a href="#"><span>ig</span></a>
+            <a href="#"><span>sc</span></a>
+        </div>
+
+        <div class="footer-bottom">
+            <span>Zwiggy Copyright 2024. All Rights Reserved.</span>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms</a>
+                <a href="#">Pricing</a>
+                <a href="#">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Search functionality
+            const searchButton = document.querySelector('.search-bar button');
+            const searchInput = document.querySelector('.search-bar input');
+            
+            searchButton.addEventListener('click', function() {
+                alert('Searching for restaurants near: ' + searchInput.value);
+            });
+            
+            // Restaurant selection
+            const restaurantCards = document.querySelectorAll('.restaurant-card');
+            restaurantCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const restaurant = this.querySelector('.restaurant-name').textContent;
+                    alert('You selected restaurant: ' + restaurant);
+                });
+            });
+            
+            // Add to cart functionality
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const dishName = this.closest('.dish-card').querySelector('h3').textContent;
+                    alert(dishName + ' added to cart!');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
