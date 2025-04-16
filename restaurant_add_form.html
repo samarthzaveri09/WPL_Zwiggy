@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurant Sign Up / Sign In</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #1a1a1a;
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .left-panel {
+      flex: 1;
+      background-color: #d9b3ff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .logo {
+      font-size: 4rem;
+      font-family: 'Brush Script MT', cursive;
+      color: #000;
+      margin-bottom: 1rem;
+    }
+
+    .icon {
+      background-color: rgba(255, 255, 255, 0.7);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cutlery {
+      font-size: 1.5rem;
+      color: #4b0082;
+    }
+
+    .right-panel {
+      flex: 1;
+      background-color: #f2efe4;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: #333;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 4px;
+      background-color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #4b0082;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 1rem 0;
+    }
+
+    .switch-link {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .switch-link button {
+      background: none;
+      border: none;
+      color: #4b0082;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="logo">Zwiggy</div>
+      <div class="icon"><span class="cutlery">🍽️</span></div>
+    </div>
+
+    <div class="right-panel">
+      <!-- Sign Up Form -->
+      <div id="signup-form">
+        <h2>Register Restaurant</h2>
+        <form action="restaurant_add.php" method="POST">
+          <div class="form-group">
+            <input type="text" name="rest_name" placeholder="Restaurant Name" required minlength="3" maxlength="100" pattern="[A-Za-z\s]+" title="Only alphabets and spaces allowed">
+          </div>
+          <div class="form-group">
+            <input type="text" name="rest_cuisine" placeholder="Cuisine Type" required>
+          </div>
+          <div class="form-group">
+            <textarea name="rest_address" placeholder="Address" required></textarea>
+          </div>
+          <div class="form-group">
+            <input type="text" name="rest_contact" placeholder="Contact Number (10 digits)" pattern="^[0-9]{10}$" title="Contact number must be 10 digits" required>
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" placeholder="Password" required>
+          </div>
+          <button type="submit" class="btn">Register Restaurant</button>
+        </form>
+        <div class="switch-link">
+          Already have an account? <button onclick="showSignInForm()">Sign In</button>
+        </div>
+      </div>
+
+      <!-- Sign In Form -->
+      <div id="signin-form" class="hidden">
+        <h2>Restaurant Sign In</h2>
+        <form action="restaurant_signin.php" method="POST">
+          <div class="form-group">
+            <input type="text" name="rest_contact" placeholder="Contact Number" pattern="^[0-9]{10}$" title="Contact number must be 10 digits" required>
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" placeholder="Password" required>
+          </div>
+          <button type="submit" class="btn">Sign In</button>
+        </form>
+        <div class="switch-link">
+          Don't have an account? <button onclick="showSignUpForm()">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showSignInForm() {
+      document.getElementById('signup-form').classList.add('hidden');
+      document.getElementById('signin-form').classList.remove('hidden');
+    }
+
+    function showSignUpForm() {
+      document.getElementById('signin-form').classList.add('hidden');
+      document.getElementById('signup-form').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
